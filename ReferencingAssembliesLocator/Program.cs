@@ -62,11 +62,22 @@ namespace ReferencingAssembliesLocator
 
 			while (true)
 			{
-				Console.WriteLine("Enter assembly name pattern or 'q' to quit.");
+				Console.WriteLine("Enter assembly name pattern.");
+				Console.WriteLine("'q' to quit.");
+				Console.WriteLine("'cs' to clear screen.");
+				Console.WriteLine();
+
 				string assemblyPattern = Console.ReadLine();
-				if (assemblyPattern.Trim().Equals("q", StringComparison.OrdinalIgnoreCase))
+				string input = assemblyPattern.Trim();
+				if (input.Equals("q", StringComparison.OrdinalIgnoreCase))
 				{
 					break;
+				}
+
+				if (input.Equals("cs", StringComparison.OrdinalIgnoreCase))
+				{
+					Console.Clear();
+					continue;
 				}
 
 				var items = locator.GetReferencedAssemblies(assemblyPattern, references);
